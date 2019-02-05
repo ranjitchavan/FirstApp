@@ -1,0 +1,16 @@
+<div class="container" *ngIf="passassignment">
+  <mat-card>
+    <mat-card-title>{{passassignment.name}}</mat-card-title>
+    <mat-card-subtitle>{{passassignment.dueDate|date}}</mat-card-subtitle>
+    <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <input matInput  [(ngModel)]="passassignment.name" name="name" [disabled]="passassignment.submitted==true">
+        </mat-form-field>
+      </form>
+   <mat-checkbox 
+        [(ngModel)]="passassignment.submitted"
+         (click)="changeSubmitted()"
+         color="warn" 
+         *ngIf="passassignment.submitted==false">Mark As Submitted</mat-checkbox>
+  </mat-card> 
+</div>
