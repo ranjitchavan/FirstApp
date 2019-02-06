@@ -11,6 +11,21 @@ import  {AssignmentDetailsComponent} from './assingment/assignment-details/assig
 import {MatButtonModule, MatInputModule, MatFormFieldModule, MatDatepicker,MatNativeDateModule, MatDatepickerModule, MatRadioGroup, MatRadioModule, MatListModule, MatCardModule, MatCheckbox, MatCheckboxModule} from  '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import {Routes, RouterModule} from '@angular/router';
+import { EditComponent } from './assingment/edit/edit.component'
+
+const routes: Routes = [
+  { path: '', component: AssingmentComponent},
+  { path: 'home', component: AssingmentComponent},
+  { path: 'add', component: AddAssignmentComponent},
+  { path: 'update/:name', component: AssignmentDetailsComponent},
+  { path: 'delete/:name', component: AssignmentDetailsComponent},
+  { path: 'updateass/:name', component: EditComponent},
+  
+
+
+];
+
 
 @NgModule({
   declarations: [
@@ -19,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     SubmittedDirective,
     UnsubmittedDirective,
     AssignmentDetailsComponent,
-    AddAssignmentComponent
+    AddAssignmentComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +51,7 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatCardModule,
     MatCheckboxModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

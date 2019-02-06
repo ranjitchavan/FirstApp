@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {Assignment} from './employe.module'
 import { AssignmentServiceService } from '../shared/assignment-service.service';
-import { Subscriber } from 'rxjs';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-assingment',
   templateUrl: './assingment.component.html',
   styleUrls: ['./assingment.component.css']
 })
 export class AssingmentComponent implements OnInit {
-    assTitle='Assignment Work !!';
+    
     enabled:boolean;
     fromDetails:boolean=false;
     buttonName:string="Add new Assignment";
@@ -16,9 +17,10 @@ export class AssingmentComponent implements OnInit {
     addAssignment:Assignment;
      assignments:Assignment[];
      assignmentService:AssignmentServiceService;
-  
-  constructor(assignmentService:AssignmentServiceService) { 
+    router:Router;
+  constructor(assignmentService:AssignmentServiceService,router:Router) { 
    this.assignmentService=assignmentService;
+    this.router=router;
   }
 
   ngOnInit() {
@@ -41,11 +43,13 @@ export class AssingmentComponent implements OnInit {
   onSelectedItem(assignment:Assignment){
     this.selectedAssignment=assignment;
     console.log(assignment.dueDate)
-
+    this.router.navigate(['/update',assignment.name]);
+    
+    //this.router.navigate(['/update',assignment.name],{queryParams:{},fragment:'edit'});
   }
   onClick(){
     
-      this.fromDetails=true;
+     // this.fromDetails=true;
       
   }
   addNewAssignment(event:Assignment){

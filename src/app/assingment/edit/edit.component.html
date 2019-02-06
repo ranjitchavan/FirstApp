@@ -1,0 +1,32 @@
+<div class="container" *ngIf="passassignment">
+    <form ngForm  #assignmentForm class="form">
+
+        <mat-form-field>
+               <input matInput #assName [(ngModel)]="passassignment.name" name="name">
+        </mat-form-field>
+        <br>
+        <br>
+        <mat-form-field>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="passassignment.dueDate" name="dueDate" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+         </mat-form-field><br>
+         <br><br>
+         <mat-radio-group class="example-radio-group" [(ngModel)]="passassignment.submitted" name="submitted">
+                <mat-radio-button class="example-radio-button" [value]="true">
+                    Submitted
+                </mat-radio-button>
+                &nbsp;
+                <mat-radio-button class="example-radio-button"  [value]="false">
+                        Unsubmitted
+                </mat-radio-button>
+        </mat-radio-group>
+        <br>
+        <button mat-raised-button
+                     (click)="onClickEdit()"
+                     color="primary"
+                     routerLink='/home'
+                   
+    >Update Assignment</button>
+    </form>
+  </div>

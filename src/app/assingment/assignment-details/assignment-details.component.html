@@ -13,9 +13,15 @@
         [(ngModel)]="passassignment.submitted"
          (click)="changeSubmitted($event)"
          color="warn" 
-         *ngIf="passassignment.submitted==false">Mark As Submitted</mat-checkbox>
-         <button mat-raised-button (click)="deleteItem($event)" color="warn">Delete</button>
-        </div>
+         routerLink='/home'
+          *ngIf="passassignment.submitted==false">Mark As Submitted</mat-checkbox>
+          <button mat-raised-button (click)="selectItem($event)" color="warn"
+          >Edit</button>
+           </div>
+         <button mat-raised-button (click)="deleteItem($event)" color="warn"
+         routerLink='/home'
+         >Delete</button>
+        
         
     </mat-card> 
   

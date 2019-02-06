@@ -58,4 +58,11 @@ export class AssignmentServiceService {
           return of('assignment deleted successfully')
     }
 
+
+    getAssignementByName(name:string):Observable<Assignment>{
+
+      return of(this.assignments1.find(ass=>ass.name===name));
+        
+    }
+
 }

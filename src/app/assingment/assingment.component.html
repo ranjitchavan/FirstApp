@@ -1,15 +1,19 @@
-<main *ngIf="fromDetails==false">
-<button mat-raised-button
+<div class="addbt">
+  <button mat-raised-button
                  (click)="onClick()"
                 color="primary"
+                routerLink='/add'
                 [disabled]="!enabled"
                 [ngClass]="{'bottom': true}"
 >{{buttonName}}</button>
-</main>
+
+</div>
+
 <main *ngIf="fromDetails==false">
   <mat-list *ngFor="let assignment of assignments">
 
     <mat-list-item (click)="onSelectedItem(assignment)">
+        
         <h3 mat-subheader>{{assignment.dueDate|date}}</h3>
       <div *ngIf="assignment.submitted else notSubmitted" >
       <p appSubmitted>Name: {{assignment.name}} DUE DATE: {{assignment.dueDate}} Submitted : {{assignment.submitted}}</p>
@@ -21,11 +25,11 @@
         </ng-template>
     </mat-list-item>
   </mat-list>  
-
-<app-assignment-details [passassignment]="selectedAssignment"></app-assignment-details>
+<!-- 
+<app-assignment-details [passassignment]="selectedAssignment"></app-assignment-details> -->
 </main>
 
 
-<main *ngIf="fromDetails">
+<!-- <main *ngIf="fromDetails">
   <app-add-assignment (newAssignment)="addNewAssignment($event)"></app-add-assignment>
-</main>  
+</main>   -->
