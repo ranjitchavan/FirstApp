@@ -6,8 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'firstApp';
-
+  assTitle='Assignment Work !!';
   onClick(){
     console.log("button click");
   }

@@ -4,6 +4,4 @@ export class Assignment{
     submitted:boolean;
     
 }
-export class FromD{
-    static fromDetails:boolean=true;
-}
+

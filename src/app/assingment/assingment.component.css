@@ -5,3 +5,11 @@
 .unsubmitted{
     color:red;
 }
+
+#bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-top;
+    margin-top: -54px;
+  
+}

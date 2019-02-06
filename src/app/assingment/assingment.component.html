@@ -1,19 +1,12 @@
- <b><h1>{{assTitle}}</h1></b>
-
-<main *ngIf="!formDisabled">
-<app-add-assignment (assignment)="addNewAssignment($event)"></app-add-assignment>
-
+<main *ngIf="fromDetails==false">
 <button mat-raised-button
                  (click)="onClick()"
                 color="primary"
                 [disabled]="!enabled"
+                [ngClass]="{'bottom': true}"
 >{{buttonName}}</button>
-
 </main>
-
-
-
-  <main *ngIf="!formDisabled">
+<main *ngIf="fromDetails==false">
   <mat-list *ngFor="let assignment of assignments">
 
     <mat-list-item (click)="onSelectedItem(assignment)">
@@ -28,6 +21,10 @@
         </ng-template>
     </mat-list-item>
   </mat-list>  
-<app-assignment-details [passassignment]="selectedAssignment"></app-assignment-details>
 
- </main>
+<app-assignment-details [passassignment]="selectedAssignment"></app-assignment-details>
+</main>
+
+<main *ngIf="fromDetails">
+  <app-add-assignment (newAssignment)="addNewAssignment($event)"></app-add-assignment>
+</main>  

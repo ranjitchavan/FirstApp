@@ -7,10 +7,17 @@
           <input matInput  [(ngModel)]="passassignment.name" name="name" [disabled]="passassignment.submitted==true">
         </mat-form-field>
       </form>
+      <div id="bottom">
+          
    <mat-checkbox 
         [(ngModel)]="passassignment.submitted"
-         (click)="changeSubmitted()"
+         (click)="changeSubmitted($event)"
          color="warn" 
          *ngIf="passassignment.submitted==false">Mark As Submitted</mat-checkbox>
-  </mat-card> 
+         <button mat-raised-button (click)="deleteItem($event)" color="warn">Delete</button>
+        </div>
+        
+    </mat-card> 
+  
+  
 </div>

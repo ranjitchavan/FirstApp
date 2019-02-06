@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Assignment,FromD} from './employe.module'
+import {Assignment} from './employe.module'
+import { AssignmentServiceService } from '../shared/assignment-service.service';
+import { Subscriber } from 'rxjs';
 @Component({
   selector: 'app-assingment',
   templateUrl: './assingment.component.html',
@@ -8,34 +10,33 @@ import {Assignment,FromD} from './employe.module'
 export class AssingmentComponent implements OnInit {
     assTitle='Assignment Work !!';
     enabled:boolean;
-    fromDetails:FromD=true;
+    fromDetails:boolean=false;
     buttonName:string="Add new Assignment";
     selectedAssignment:Assignment;
     addAssignment:Assignment;
-    assignments:Assignment[]=[
-    {
-      name:'Ranjit',
-      dueDate:new Date('2019-01-01'),
-      submitted:true
-
-    },
-    {
-       name:'Jack',
-       dueDate:new Date('2019-01-01'),
-       submitted:false 
-    } 
-  ];
-
-  constructor() { }
-
-  ngOnInit() {
-
-    setTimeout(()=>{
-
-      this.enabled=true;
-    },2000);
+     assignments:Assignment[];
+     assignmentService:AssignmentServiceService;
+  
+  constructor(assignmentService:AssignmentServiceService) { 
+   this.assignmentService=assignmentService;
   }
 
+  ngOnInit() {
+    this.getAssignmentsFromService();
+    setTimeout(()=>{
+        this.enabled=true;
+    },2000);
+  }
+    getAssignmentsFromService(){
+
+     this.assignmentService.getAssignments().
+     subscribe(assignments=>this.assignments=assignments);
+    
+    }
+     public get value() : string {
+       return 
+     }
+            
 
   onSelectedItem(assignment:Assignment){
     this.selectedAssignment=assignment;
@@ -43,11 +44,13 @@ export class AssingmentComponent implements OnInit {
 
   }
   onClick(){
-
-      this.fromDetails=false;
+    
+      this.fromDetails=true;
       
   }
   addNewAssignment(event:Assignment){
-    this.assignments.push(event);
+    this.assignmentService.addNewAssignments(event).
+    subscribe(msg=>console.log(msg));
+    this.fromDetails=false;
   }
 }

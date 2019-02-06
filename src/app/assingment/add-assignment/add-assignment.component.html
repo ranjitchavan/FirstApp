@@ -1,4 +1,4 @@
-<main *ngIf="hide">
+
 <form ngForm  #assignmentForm class="form">
 
     <mat-form-field>
@@ -21,6 +21,7 @@
                     Unsubmitted
             </mat-radio-button>
     </mat-radio-group>
+    <br>
     <button mat-raised-button
                  (click)="onClick()"
                 color="primary"
@@ -28,4 +29,3 @@
 >Add Assignment</button>
 </form>
 <br><br>
-</main>
