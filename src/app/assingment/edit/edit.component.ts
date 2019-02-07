@@ -23,18 +23,16 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.getAssignmentElement();
-    console.log(this.passassignment.name);
+    
   }
   changeSubmitted(event:Assignment){
     this.passassignment.submitted=true;
-    this.assignmentService.updateAssignments(this.passassignment).subscribe(e=>console.log(e));
-   
-    this.router.navigate(['/home']);
+    this.assignmentService.updateAssignments(this.passassignment).subscribe(e=>this.router.navigate(['/home']));
 
   }
   deleteItem(event:Assignment){
-      this.assignmentService.deleteAssignmentService(this.passassignment).subscribe(e=>console.log(e));
-      this.router.navigate(['/home']);
+      this.assignmentService.deleteAssignmentService(this.passassignment).subscribe(e=>this.router.navigate(['/home']));
+     
   }
   getAssignmentElement(){
     const name=this.activeRoute.snapshot.params.name;

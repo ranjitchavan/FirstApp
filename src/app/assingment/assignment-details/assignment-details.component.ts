@@ -33,8 +33,9 @@ export class AssignmentDetailsComponent implements OnInit {
 
   }
   deleteItem(event:Assignment){
-      this.assignmentService.deleteAssignmentService(this.passassignment).subscribe(e=>console.log(e));
+      this.assignmentService.deleteAssignmentService(this.passassignment).subscribe(e=>this.router.navigate(['\home']));
       this.passassignment=null;
+
   }
   getAssignmentElement(){
     const name=this.activeRoute.snapshot.params.name;

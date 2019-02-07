@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {Routes, RouterModule} from '@angular/router';
 import { EditComponent } from './assingment/edit/edit.component'
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   { path: '', component: AssingmentComponent},
@@ -51,7 +52,8 @@ const routes: Routes = [
     MatListModule,
     MatCardModule,
     MatCheckboxModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
